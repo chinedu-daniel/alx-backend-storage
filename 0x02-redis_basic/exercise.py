@@ -14,6 +14,9 @@ class Cache:
     """
 
     def __init__(self):
+        """
+        Initialize new cache object
+        """
         self._redis = redis.Redis()
         self._redis.flushdb()
 
@@ -23,7 +26,8 @@ class Cache:
         """
         store a data argument and returns a string
         """
-        uuid_num = str(uuid.uuid4())
-        self._redis.set(uuid_num, data)
+        uuid_num = str(uuid4())
+        client = self._redis
+        client.set(uuid_num, data)
 
         return uuid_num

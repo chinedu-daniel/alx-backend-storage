@@ -31,3 +31,29 @@ class Cache:
         client.set(uuid_num, data)
 
         return uuid_num
+
+    def get(self, key, fn: Optional[Callable] = None):
+        """
+        create a get method that take a key string argument
+        """
+        exists = self._redis.get(key)
+
+        if exists is None:
+            return None
+
+        if fn:
+            return str(fn(exists))
+
+        return exists
+
+    def get_str(self, key):
+        """
+        get_str, get_int
+        """
+        return self._redis.get(key, fn=lambda d: d.decode("utf-8"))
+
+    def get_int(self, key):
+        """
+        get_str, get_int
+        """
+        return self._redis.get(key, fn=int)

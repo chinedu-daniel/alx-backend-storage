@@ -10,9 +10,10 @@ class Cache:
     """
     Create a Cache class
     """
+
     def __init__(self):
         self._redis = redis.Redis()
-        self._redis.flushdb
+        self._redis.flushdb()
 
     @call_history
     @count_calls

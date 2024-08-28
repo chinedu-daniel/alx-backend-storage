@@ -17,11 +17,11 @@ class Cache:
 
     @call_history
     @count_calls
-    def store(self, data: Union[str, bytes, int, float]) -> str:
+    def store(self, data: Union[str, int, bytes, float]) -> str:
         """
         store a data argument and returns a string
         """
         uuid_num = str(uuid.uuid4())
-        self.redis.set(uuid_num, data)
+        self._redis.set(uuid_num, data)
 
         return uuid_num

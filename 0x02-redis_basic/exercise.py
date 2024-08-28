@@ -4,6 +4,7 @@ Writing strings to Redis
 """
 import Redis
 import uuid
+from typing import Union, Optional, Callable
 
 
 class Cache:
